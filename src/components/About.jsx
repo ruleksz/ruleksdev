@@ -30,6 +30,17 @@ export default function About() {
                         <p className="text-muted-foreground leading-relaxed">
                             {t.about.journeyText3}
                         </p>
+                        <a
+                            href="https://drive.google.com/file/d/1CG13a8w-OqAGzJ-gE_qxMth2zfQRUvqg/view?usp=sharing"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:opacity-90 transition-opacity"
+                        >
+                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            {t.about.downloadCv || 'Download CV'}
+                        </a>
                     </div>
 
                     <div className="space-y-4 animate-in delay-200">
