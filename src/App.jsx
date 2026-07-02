@@ -1,34 +1,26 @@
-import { ThemeProvider } from './context/ThemeContext';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "./context/ThemeContext";
 import { LanguageProvider } from './context/LanguageContext';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Projects from './components/Projects';
-import Skills from './components/Skills';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import ScrollToTop from './components/ScrollToTop';
-import './App.css';
 
-function App() {
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import AboutPage from "./pages/About";
+import ComingSoon from "./pages/ComingSoon";
+
+export default function App() {
   return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <div className="min-h-screen bg-background text-foreground">
+    <BrowserRouter>
+      <ThemeProvider>
+        <LanguageProvider>
           <Navbar />
-          <main>
-            <Hero />
-            <About />
-            <Projects />
-            <Skills />
-            <Contact />
-          </main>
-          <Footer />
-          <ScrollToTop />
-        </div>
-      </LanguageProvider>
-    </ThemeProvider>
+
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="*" element={<ComingSoon />} />
+          </Routes>
+        </LanguageProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
-
-export default App;

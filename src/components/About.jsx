@@ -5,7 +5,7 @@ export default function About() {
 
     return (
         <section id="about" className="p-10 bg-muted/50 rounded-2xl">
-            <div className="flex gap-3 mb-20">
+            <div className="flex gap-3">
                 <div className="w-4 h-4 bg-red-500 rounded-full flex items-center justify-center"></div>
                 <div className="w-4 h-4 bg-yellow-500 rounded-full flex items-center justify-center"></div>
                 <div className="w-4 h-4 bg-green-500 rounded-full flex items-center justify-center"></div>
@@ -21,14 +21,18 @@ export default function About() {
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                     <div className="space-y-6 animate-in delay-100">
                         <h3 className="text-3xl font-bold">{t.about.journey}</h3>
-                        <p className="text-muted-foreground leading-relaxed">
+                        <p className="text-muted-foreground leading-relaxed text-justify">
                             {t.about.journeyText}
                         </p>
-                        <p className="text-muted-foreground leading-relaxed">
+                        <p className="text-muted-foreground leading-relaxed text-justify">
                             {t.about.journeyText2}
                         </p>
-                        <p className="text-muted-foreground leading-relaxed">
+                        <p className="text-muted-foreground leading-relaxed text-justify">
                             {t.about.journeyText3}
+                        </p>
+                        <p className="text-muted-foreground leading-relaxed text-justify">
+                            Salam Hangat, <br />
+                            <span className='font-logo gradient-text text-2xl'>RulekszDev</span>
                         </p>
                         <a
                             href="https://drive.google.com/file/d/1CG13a8w-OqAGzJ-gE_qxMth2zfQRUvqg/view?usp=sharing"

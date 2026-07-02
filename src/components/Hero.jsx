@@ -22,10 +22,10 @@ export default function Hero() {
                             {t.hero.description}
                         </p>
                         <div className="flex flex-wrap gap-4 pt-4">
-                            <a href="#contact" className="btn-primary">
+                            <a href="/contact" className="btn-primary">
                                 {t.hero.cta1}
                             </a>
-                            <a href="#projects" className="btn-secondary">
+                            <a href="/projects" className="btn-secondary">
                                 {t.hero.cta2}
                             </a>
                         </div>

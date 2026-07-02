@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -9,11 +10,11 @@ export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const navLinks = [
-        { href: '#home', label: t.nav.home },
-        { href: '#about', label: t.nav.about },
-        { href: '#projects', label: t.nav.projects },
-        { href: '#skills', label: t.nav.skills },
-        { href: '#contact', label: t.nav.contact },
+        { to: "/", label: t.nav.home },
+        { to: "/about", label: t.nav.about },
+        { to: "/projects", label: t.nav.projects },
+        { to: "/skills", label: t.nav.skills },
+        { to: "/contact", label: t.nav.contact },
     ];
 
     useEffect(() => {
@@ -23,14 +24,6 @@ export default function Navbar() {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-
-    const scrollToSection = (href) => {
-        const element = document.querySelector(href);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
-        setIsMobileMenuOpen(false);
-    };
 
     if (!mounted) {
         return (
@@ -56,20 +49,27 @@ export default function Navbar() {
             }`}>
             <div className="container-custom">
                 <div className="flex h-16 items-center justify-between">
-                    <a href="#home" className="text-xl font-bold gradient-text" onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }}>
-                        Ruleksz<span className='text-foreground'>Dev</span>
-                    </a>
+                    <NavLink
+                        to="/"
+                        className="text-xl font-bold gradient-text"
+                    >
+                        Ruleksz<span className="text-foreground">Dev</span>
+                    </NavLink>
 
                     <div className="hidden md:flex items-center gap-8">
                         {navLinks.map((link) => (
-                            <a
-                                key={link.href}
-                                href={link.href}
-                                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                                onClick={(e) => { e.preventDefault(); scrollToSection(link.href); }}
+                            <NavLink
+                                key={link.to}
+                                to={link.to}
+                                className={({ isActive }) =>
+                                    `text-sm font-medium transition-colors ${isActive
+                                        ? "text-primary"
+                                        : "text-muted-foreground hover:text-foreground"
+                                    }`
+                                }
                             >
                                 {link.label}
-                            </a>
+                            </NavLink>
                         ))}
                     </div>
 
@@ -124,14 +124,19 @@ export default function Navbar() {
                 <div className="md:hidden bg-background border-t border-border animate-slide-down">
                     <div className="container-custom py-4 space-y-2">
                         {navLinks.map((link) => (
-                            <a
-                                key={link.href}
-                                href={link.href}
-                                className="block px-4 py-2 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
-                                onClick={(e) => { e.preventDefault(); scrollToSection(link.href); }}
+                            <NavLink
+                                key={link.to}
+                                to={link.to}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className={({ isActive }) =>
+                                    `block rounded-lg px-4 py-2 text-base font-medium transition-colors ${isActive
+                                        ? "bg-accent text-foreground"
+                                        : "text-muted-foreground hover:bg-accent hover:text-foreground"
+                                    }`
+                                }
                             >
                                 {link.label}
-                            </a>
+                            </NavLink>
                         ))}
                     </div>
                 </div>
